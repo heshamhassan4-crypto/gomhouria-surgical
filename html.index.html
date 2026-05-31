@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>شركة الجمهورية لتجارة الأدوية - الآلات الجراحية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;direction:rtl;}
+body{font-family:'Cairo',sans-serif;background:#f0f2f5;color:#1c1e21;}
+
+/* ===== COVER ===== */
+.cover{height:220px;background:linear-gradient(135deg,#0a1f3c 0%,#0d3f6e 45%,#1565c0 80%,#1976b8 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;position:relative;overflow:hidden;}
+.cover-pat{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:16px 16px;}
+.cover h1{font-size:22px;font-weight:800;z-index:1;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.4);}
+.cover p{font-size:13px;opacity:.85;margin-top:6px;z-index:1;}
+.iso-row{display:flex;gap:8px;margin-top:10px;z-index:1;}
+.iso-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;}
+.cover-addr{position:absolute;bottom:10px;color:rgba(255,255,255,.75);font-size:11px;z-index:1;}
+
+/* ===== PROFILE ===== */
+.profile{background:white;max-width:800px;margin:0 auto 12px;padding:0 20px 16px;box-shadow:0 1px 3px rgba(0,0,0,.1);}
+.profile-top{display:flex;align-items:flex-end;gap:14px;}
+.avatar{width:90px;height:90px;border-radius:50%;background:white;border:4px solid white;box-shadow:0 2px 10px rgba(0,0,0,.15);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;top:-30px;margin-bottom:-14px;flex-shrink:0;}
+.avatar svg{width:72px;height:72px;}
+.pname{padding-top:10px;}
+.pname h2{font-size:20px;font-weight:800;}
+.pname .en{font-size:12px;color:#65676b;font-weight:600;}
+.pname .cat{color:#1877f2;font-size:12px;font-weight:700;margin-top:3px;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:14px;padding-top:12px;border-top:1px solid #e4e6eb;}
+.sc{text-align:center;border-left:1px solid #e4e6eb;padding:0 8px;}
+.sc:last-child{border-left:none;}
+.sc .n{font-size:17px;font-weight:800;color:#1877f2;}
+.sc .l{font-size:10px;color:#65676b;}
+.actions{display:flex;gap:8px;margin-top:14px;}
+.btn-p{background:#1877f2;color:white;border:none;padding:9px 18px;border-radius:6px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;flex:1;}
+.btn-s{background:#e4e6eb;color:#050505;border:none;padding:9px 18px;border-radius:6px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;flex:1;}
+
+/* ===== NAV ===== */
+.page-nav{background:white;display:flex;max-width:800px;margin:0 auto 12px;box-shadow:0 1px 2px rgba(0,0,0,.1);overflow-x:auto;}
+.page-nav a{padding:14px 18px;font-size:14px;font-weight:700;color:#65676b;text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent;}
+.page-nav a.active{color:#1877f2;border-bottom-color:#1877f2;}
+
+/* ===== LAYOUT ===== */
+.main{max-width:800px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:12px;padding:0 0 20px;}
+@media(max-width:640px){.main{grid-template-columns:1fr;}}
+
+/* ===== ABOUT CARD ===== */
+.card{background:white;border-radius:8px;padding:16px;box-shadow:0 1px 2px rgba(0,0,0,.1);margin-bottom:12px;}
+.card-title{font-size:15px;font-weight:800;color:#1c1e21;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #e7f0fc;}
+.arow{display:flex;gap:10px;margin-bottom:9px;font-size:13px;color:#3c3c3c;align-items:flex-start;}
+.arow .ic{color:#1877f2;font-size:16px;flex-shrink:0;margin-top:2px;}
+.arow a{color:#1877f2;text-decoration:none;}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px 10px;margin-top:6px;}
+.hr{display:flex;justify-content:space-between;padding:4px 8px;border-radius:5px;font-size:11px;}
+.hr.w{background:#f0f7ff;}
+.hr.o{background:#fff0f0;}
+.hr.w .d{font-weight:700;color:#1c1e21;}
+.hr.o .d{font-weight:700;color:#c62828;}
+.hr.w .t{color:#1565c0;font-weight:600;}
+.hr.o .t{color:#c62828;font-weight:600;}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+.chip{background:#e7f3ff;color:#1877f2;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;}
+
+/* ===== PRODUCTS SECTION ===== */
+.toolbar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #f0f2f5;}
+.search-box{flex:1;display:flex;align-items:center;gap:6px;background:#f0f2f5;border-radius:20px;padding:6px 12px;}
+.search-box input{border:none;background:transparent;font-family:'Cairo',sans-serif;font-size:13px;color:#1c1e21;outline:none;width:100%;}
+.search-box input::placeholder{color:#aaa;}
+.cnt-badge{background:#e7f3ff;color:#1877f2;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;}
+.filter-bar{display:flex;gap:5px;padding:8px 14px;overflow-x:auto;border-bottom:1px solid #f0f2f5;}
+.fb{padding:4px 11px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;border:1.5px solid #e4e6eb;background:white;color:#65676b;font-family:'Cairo',sans-serif;white-space:nowrap;flex-shrink:0;}
+.fb.on{background:#1877f2;color:white;border-color:#1877f2;}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e4e6eb;}
+.pc{background:white;cursor:pointer;position:relative;}
+.pc:hover .ov{opacity:1;}
+.pw{width:100%;padding-top:100%;position:relative;background:#f0f2f5;}
+.pw img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#e3f2fd,#bbdefb);gap:4px;}
+.ph .phi{font-size:24px;}
+.ph span{font-size:9px;color:#1565c0;font-weight:700;text-align:center;padding:0 4px;}
+.pi{padding:6px 8px 8px;}
+.pi h4{font-size:10px;font-weight:700;color:#1c1e21;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.3;}
+.pi .ps{font-size:9px;color:#65676b;}
+.ov{position:absolute;inset:0;background:rgba(24,119,242,.8);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
+.ov span{color:white;font-size:11px;font-weight:700;}
+.clb{position:absolute;top:5px;right:5px;background:rgba(0,0,0,.5);color:white;font-size:8px;font-weight:700;padding:1px 5px;border-radius:8px;font-family:'Cairo',sans-serif;}
+
+/* ===== PAGER ===== */
+.pager{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px;background:white;border-top:1px solid #e4e6eb;}
+.pg-btn{background:#f0f2f5;border:none;padding:7px 18px;border-radius:6px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;color:#1c1e21;}
+.pg-btn:disabled{opacity:.35;cursor:default;}
+.pg-info{font-size:12px;color:#65676b;font-weight:600;}
+
+/* ===== MODAL ===== */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:200;align-items:center;justify-content:center;}
+.modal-bg.open{display:flex;}
+.modal{background:white;border-radius:12px;width:92%;max-width:460px;overflow:hidden;}
+.modal-img-wrap{width:100%;height:260px;background:#f0f2f5;display:flex;align-items:center;justify-content:center;}
+.modal-img-wrap img{max-width:100%;max-height:100%;object-fit:contain;}
+.modal-body{padding:14px;}
+.modal-body h3{font-size:15px;font-weight:800;color:#1c1e21;margin-bottom:10px;}
+.mrow{display:flex;gap:8px;margin-bottom:5px;font-size:12px;}
+.ml{color:#65676b;min-width:75px;flex-shrink:0;}
+.mv{color:#1c1e21;font-weight:600;}
+.modal-btns{display:flex;gap:8px;margin-top:12px;}
+.mbtn{flex:1;padding:9px;border-radius:6px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;border:none;}
+.mbtn.p{background:#1877f2;color:white;}
+.mbtn.s{background:#e4e6eb;color:#1c1e21;}
+.empty{padding:40px;text-align:center;color:#65676b;font-size:14px;background:white;}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-pat"></div>
+  <h1>شركة الجمهورية لتجارة الأدوية<br>والكيماويات والمستلزمات الطبية</h1>
+  <p>EL GOMHOURIA CO. FOR DRUGS</p>
+  <div class="iso-row">
+    <span class="iso-pill">ISO 9001:2015</span>
+    <span class="iso-pill">ISO 45001:2018</span>
+  </div>
+  <div class="cover-addr">📍 22 شارع السواح الأميرية، القاهرة</div>
+</div>
+
+<!-- PROFILE -->
+<div class="profile">
+  <div class="profile-top">
+    <div class="avatar">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M55 18 Q80 14 82 38" stroke="#e53935" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="83" cy="40" r="4" fill="#e53935"/>
+        <path d="M38 32 L62 32 L62 52 Q62 60 54 62 L46 62 Q38 60 38 52 Z" fill="#00897b" opacity="0.85"/>
+        <path d="M30 42 Q18 42 18 54" stroke="#5c6bc0" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="18" cy="57" r="4.5" fill="none" stroke="#5c6bc0" stroke-width="3"/>
+        <path d="M62 55 Q72 58 70 72 Q68 82 58 82" stroke="#e53935" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <circle cx="57" cy="83" r="3.5" fill="#e53935"/>
+        <path d="M50 62 L50 80" stroke="#5c6bc0" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M44 80 L56 80" stroke="#5c6bc0" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="pname">
+      <h2>شركة الجمهورية <span style="color:#1877f2">✓</span></h2>
+      <div class="en">EL GOMHOURIA CO. FOR DRUGS</div>
+      <div class="cat">🏥 أدوية · كيماويات · مستلزمات طبية · القاهرة</div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="sc"><div class="n">830+</div><div class="l">صنف جراحي</div></div>
+    <div class="sc"><div class="n">12.4K</div><div class="l">إعجاب</div></div>
+    <div class="sc"><div class="n">13.1K</div><div class="l">متابع</div></div>
+    <div class="sc"><div class="n">ISO</div><div class="l">معتمد</div></div>
+  </div>
+  <div class="actions">
+    <button class="btn-p">👍 إعجاب</button>
+    <button class="btn-s">💬 مراسلة</button>
+    <button class="btn-s">↗ مشاركة</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="page-nav">
+  <a href="#" class="active">المنشورات</a>
+  <a href="#">حول</a>
+  <a href="#products">المنتجات</a>
+  <a href="#">الصور</a>
+  <a href="#">المزيد</a>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <div>
+    <div class="card">
+      <div class="card-title">حول الشركة</div>
+      <div class="arow"><span class="ic">🏥</span><span>شركة رائدة في توريد الآلات الجراحية والمستلزمات الطبية</span></div>
+      <div class="arow"><span class="ic">📍</span><span>منفذ البيع الرئيسي: 22 شارع السواح الأميرية، القاهرة<br><small style="color:#65676b">برقياً: جومساك القاهرة | سجل تجاري: [١١٧٠٧٢]</small></span></div>
+      <div class="arow"><span class="ic">📞</span><span>٢٢٥٧١٣١٤ – ٢٢٥٧٢٠٦٧ | فاكس: ٢٢٥٧١٦٩٨</span></div>
+      <div class="arow"><span class="ic">📧</span><a href="mailto:info@el-gomhouria.com">info@el-gomhouria.com</a></div>
+      <div class="arow"><span class="ic">🌐</span><a href="https://www.el-gomhouria.com" target="_blank">www.el-gomhouria.com</a></div>
+      <div class="arow" style="align-items:flex-start;">
+        <span class="ic">🕐</span>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:12px;color:#1c1e21;margin-bottom:6px;">مواعيد العمل</div>
+          <div class="hours-grid">
+            <div class="hr w"><span class="d">الأحد</span><span class="t">8ص–4م</span></div>
+            <div class="hr w"><span class="d">الاثنين</span><span class="t">8ص–4م</span></div>
+            <div class="hr w"><span class="d">الثلاثاء</span><span class="t">8ص–4م</span></div>
+            <div class="hr w"><span class="d">الأربعاء</span><span class="t">8ص–4م</span></div>
+            <div class="hr w"><span class="d">الخميس</span><span class="t">8ص–4م</span></div>
+            <div class="hr o"><span class="d">الجمعة</span><span class="t">إجازة</span></div>
+            <div class="hr o"><span class="d">السبت</span><span class="t">إجازة</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip">ISO 9001:2015</span>
+        <span class="chip">ISO 45001:2018</span>
+        <span class="chip">وزارة الصحة ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS SECTION -->
+  <div id="products">
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div style="padding:12px 16px;border-bottom:1px solid #e4e6eb;display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:15px;font-weight:800;">🔬 كتالوج المنتجات الجراحية</div>
+        <span class="cnt-badge" id="cnt-badge">830 صنف</span>
+      </div>
+      <div class="toolbar">
+        <div class="search-box">
+          <span style="color:#aaa;font-size:14px;">🔍</span>
+          <input id="s-input" type="text" placeholder="بحث بالكود أو اسم الصنف أو النوع..." oninput="doSearch()"/>
+        </div>
+      </div>
+      <div class="filter-bar">
+        <button class="fb on" onclick="setFilter('all',this)">الكل</button>
+        <button class="fb" onclick="setFilter('جفت',this)">جفت</button>
+        <button class="fb" onclick="setFilter('مباعد',this)">مباعد</button>
+        <button class="fb" onclick="setFilter('شريحة',this)">شرائح العظام</button>
+        <button class="fb" onclick="setFilter('مقص',this)">مقص</button>
+        <button class="fb" onclick="setFilter('مسمار',this)">مسامير</button>
+        <button class="fb" onclick="setFilter('قراضة',this)">قراضة</button>
+        <button class="fb" onclick="setFilter('هوك',this)">هوك</button>
+        <button class="fb" onclick="setFilter('كحاتة',this)">كحاتة</button>
+        <button class="fb" onclick="setFilter('مشرح',this)">مشرح</button>
+        <button class="fb" onclick="setFilter('خيوط',this)">خيوط</button>
+      </div>
+      <div id="gallery" class="gallery"></div>
+      <div id="empty" class="empty" style="display:none;">لا توجد نتائج مطابقة</div>
+      <div id="pager" class="pager" style="display:none;">
+        <button class="pg-btn" id="btn-prev" onclick="changePage(-1)" disabled>→ السابق</button>
+        <span class="pg-info" id="pager-info"></span>
+        <button class="pg-btn" id="btn-next" onclick="changePage(1)">التالي ←</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main -->
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-img-wrap"><img id="m-img" src="" alt=""/></div>
+    <div class="modal-body">
+      <h3 id="m-title"></h3>
+      <div class="mrow"><span class="ml">الكود:</span><span class="mv" id="m-code"></span></div>
+      <div class="mrow"><span class="ml">النوع:</span><span class="mv" id="m-type"></span></div>
+      <div class="mrow"><span class="ml">المصنع:</span><span class="mv" id="m-mfr"></span></div>
+      <div class="mrow"><span class="ml">الاسم الكامل:</span><span class="mv" id="m-name" style="font-size:11px;"></span></div>
+      <div class="modal-btns">
+        <a id="m-link" href="#" target="_blank" class="mbtn p" style="text-decoration:none;display:flex;align-items:center;justify-content:center;">فتح في درايف</a>
+        <button class="mbtn s" onclick="closeModal()">إغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PER = 30;
+let all=[], filtered=[], page=1, search='', filter='all';
+
+const DRIVE = {"44LI12":"11_G2NksVVP221FWjzCdJNlqMGfg6PW7k","4A0701":"1IKS9NLngEZLBnb8N0yAeojKC3t5KaXpW","474031":"13VyQWQnYPoDOt3FbN-FFYqPGljpKakZc","472604":"1ErScBh15k6ta3jU6lDIWs6eEqkZgQ4ja","472380":"1H42uNm1D3rpWkFRBr3pzQhFh1is-ejtt","472033":"1hWovC7cGR16pK3DOpE0Xq10BFuub0WiJ","472032":"127Uruq8hdRtF3_ihdb4YjTi9va6sAJmC","469810":"10DiYRZuTgKPOp8p8qqGbteKf1N6CuhMJ","469457":"1YrEpyikgtzjU5bkm_EDeBjMTh3ChMj7D","468613":"1Hmw3a7HkQZaEa1lXrGK_Ay8yB9-V5Ymh","468420":"1k21quElLTgJ48jJ3vOF8tk684KLYtSFl","467134":"1cQ_66IrANAXCwBIqegKK1vQYiFc09xi8","466615":"1CWvy3Q8WlOG0SouKK9P20QGZXCGHr2iB","466613":"1JZOBZ-mujmd8w0T1WwK0kLn-QuwjErF0","466611":"1lh7SvJ4lKW6MWTHlXgK6FrqeuTnSrWm3","466212":"1O398EmgMDjnM4VQIm1NA9C3_THHTywvp","466211":"1p6xHh2iRe0xFiplCtr6bYPeHHki3iFJO","466210":"1IEE1i1bmakyYBRX4c20P2QJ82N7_2ukn","466213":"1J8Ex60cyZLvv0V9XgwNoZCMW7NOdSohM","465810":"1RO4luCnVEhgjSp4xOk_ENZU5XRxssmcb","465171":"1ZEuaiVwtc6L8KkunD5XyUfJVloyVd3Zz","465170":"11o8RLAZSoi0MmdT3YjDPg6KvQOB09LoU","464827":"1_8fzxh3jS7GAbOmuJ8w5s68_8el9Kdap","464822":"16MWsLRlqBPboR4qzKZM4Vb5-0XKGipvG","463299":"184a4pvQCvXda4BEV7QyqfCqFlUetml1T","463292":"1KjqdveOs2NLh7SkCwjpaoncv1wo9zafn","463291":"1OKr65YJ3B0LDSavG4zRP4COmrjm4tk_D","463289":"14JOlRXrayHUtOqjwKJu8YEAjnurLDqny","463288":"17m-hZWEq5GGSW7nu8-_WGj9BWhklEh96","463287":"1dFLsVmk8GWN_NspEeJhSaefRhOnUo1Uy","463286":"1ZkeaKPIPKh7BRQmTmkwB6A66fwOkTrvo","463283":"1Z4d35xOb8obbXy1JlQdugOe3PfN11z54","463280":"1Q39qUusPmXMmjLNKTyXWC-zhRfCJ1PHq","463279":"1evgvFJPFYnlFe9zByjFSo1nB6JKFGWEU","463277":"1ts3JTN2NN8yve6RsQN4fK2XF1tSm6OPr","463276":"1EmZt9K7UPSm1f77cvuBxMtktuDTM9DxJ","463275":"1OWVrlwV5uQYDDAzlpi4sCCKZWz94s7cG","463243":"1XIIxIAe-x__kfz29oYwOI7lLqq7cRDOw","463242":"1_wC2Ojx3nO3PZa-PERpiW5bePj_SnYF-","463232":"1RrTD0IqYBgeQ67umsFKH3D6jVw3B1nZF","462845":"1KpKehfz-CK9ytnZhGx_z1rlz_0u-9XVe","462844":"1th6GZkqLs6mLK1siTA_0zThvhE__587T","462840":"1GOerXzKqnpFPT4-pa05ExCDgQNTJgyyB","462836":"1_Y9-Kz8zaNRBygY3cazvzLJKOjMQFI9U","462832":"1gxxZhTHaEQzZBNjVYfFAQtvXLzmUXJJp","462826":"1dX9-FMlOWO77ATejOjXVjqoSIHiD-khV","462753":"1xNzbPoW4IwBY2rYZFsjCum7sAwAGXd2m","462752":"1uDrV9kS0X1UmCI3XtcMmC5HiqZL5zt-k","462741":"1I5TuXCh_cQOIipQt8iVUCgFNq9L6_n-p","462729":"1_pd11ofMEP7yLNoPiKze5X-wzepN7zj4","462722":"1zVY1YHCxjpcL2uLN_k7KPvD6XYCYrAbn","462716":"196dT8dS0hV4B8FeYEwwtG54nKgtZHgIe","462390":"18wwY2zuqaM_QYZEYOXv3-VmUWk8GtikG","462145":"1xEuUwlxglJLunzFpDi0zkw4frYTzC3lA","462085":"1CLhUaa-wmTxMHg-GkefV2IAn_6MsLoiQ","462084":"1W1Jnm9cJ14wgviK-nvI4REhj5y6LHfKG","462082":"1u93p30F--PaqnclJyB7vz2pkseUaZh-B","462080":"1udTOYufkaiyM5x75WCv3KWR8dPNzsD4V","462034":"16AjYWz3_oqf9HKir6gI0M_d5fnhtvIyj","462033":"1YQCHTKGnbyFU7hqLdR4DMp4qfBP85mm4","462030":"1995T0jdxrftRLawEjlPAoZK6bpy6PLEY","461942":"1I9mYsZ1WHRzN2d_Xs3VsLe-x4bAeiDBS","461923":"1wqMnT1SKYa7j39EbwMD_II6Uw4uhkIPw","461852":"13XqjZL53gQIa0dfTQiLIcwJsi0762Ezv","461851":"1mIX3ElbEc0nW4t6tiCWSr9mI02eIuTVz","461804":"1gDhC6P169qA-j7XKwniRiCXI5CFg7T3m","461801":"1s0qaqzKL0qY4cIpYleTK4hAdCcM4FvKs","461800":"19bzokSMn7r4tFGVHik2AAlpPXasL6Ihw","461725":"1y2EFHKkKESsCzSyLHTYEQuFIxVnwM_4k","461724":"11ERh5sLGR7E9WlmOjzkNK1DC9bz6yBzX","461723":"1cRx-6oCTp5nm4_UcoV6EDPQEaHWZH_bw","461722":"1Zk4u9-EnY4fT7m5ArDcUphOfqJrbC_s_","461721":"19H5T01Jy8ZpY3dC48nZGv8SRVkbF7WDm","461720":"1DiJrq9kV3KQ28oJLZ6o5apbT25cNbVU1","461689":"1LdkO5yrovoI6FFLgnHnQS7UsQrmQvPKO","461676":"1DDP8i3D_C-9Dr4Uk5wbRee1wajZonKm5","461674":"1olL0r98x6WVRhRVB0KYlAJ6TflBhVzTv","461666":"12xkLdnqRI8mBA7ofP64GxiSy7o-1Tv0I","461664":"1hWfWZBOTiJvbY4y--GeOfas0bIiACnVC","461663":"1xEbbISVmzRnc261_EyBNjaeXmV5ozV2P","461662":"1ksvfViJzBakfYzOj95NkYQA4ioRBg2Ji","461656":"1rFxJSrM3nRlakIMs_fpIUymVoq-1phlF","461650":"1E9FtSoDz9EQhG6Hohr6Zd9SxXPFqPoU7","461647":"1gbaInB6Zq6Mnff4KXH7NoqCeDGb0iocY","460935":"1RuSJEvk4SbtOkVzyOad43RiBHpQQ9wgm","460925":"1Ptjy4TANzt2Zge7kXXNLauiReAWeeRqG","458360":"1Qs6GiOYfvZgP_O51s7e06bdLsX5xsmqT","458140":"1GHRSqLdd29-t8FYnp349Vp8h73TpAxjt","457400":"1Np4_5rUsga7bOTIzDOv3KOrfvrTWrq6J","457010":"18EXL2T8d9Dq7dfUkRFEKespNP8ehppps","452900":"1NvSc07WhjPR7DeHbBXIsN40GOIBvnMIK","452870":"1NuQ0RxkFkn-Ri4j0ZWSKyOQ0xj9NSXzB","452624":"1MDkYElwE6jqkvpRcSRtVNnWg0hUMMOPJ","452623":"1ozjtCDSgIKmcQQdQQieAGwFD0aQX9F0V","452480":"1wU7GduQzymlzCslCxsHfQU6HfRT7rH3i","451680":"17xTW0vfiS2Lgecg8Vjps_xMdEAnEKBJ2","450750":"1uN5CXQ_9yU-ljoXPAcSvm4yjp0WvM6C6","450420":"1NQl1hvQ4XvosRGwnkwGCHwvq2bxY6fCP","450211":"1In2A3YQBLcgBj0oJdNwdyQ7zCM0aVX6v","450210":"1zM3iqew06ye651iuMfJDoR5XFn8FRB9z","439590":"19W4dhKlxRQYpoEdUhPCVd6dpt9ovcfE5","439380":"1U__jYuaoep1pF-eDinCb8z5N99_16_7s","439210":"1IA5tLtwiobnortIDOvzHkPl965ETLrcA","439190":"17zFs1sQOj0wmbq9FmQKULc-5vAE04pa9","438650":"1Y9vhfYS4YPzXbzNtchGnBmgihiFInqlB","438533":"1PgAzQ21gH75pKDG2uX5nYxN9sJBYFiLE","438290":"12Vn125vHKeemb8dpDYtG5l6f6nG4o1cy","438010":"1PtJp6LEXV_T_tRW6MzIUaGsUnriFDvUw","437810":"1BYAXD9Wrgs8SG_hinYDz23RUWT3p5i-G","437670":"1tf8kuYv8nQPDdn4U74oNZaGKr4XsCYGt","437610":"1tRhFn-DgL2vSncmhAwmesZkN5dRP46IE","437590":"1aY8wNJatfZ74H4HiEcz1GraTh34L3k3M","437541":"1uHfgTVmccy3ScXHWcm74bt2DUlEKTRG-","437470":"1Sfzx5QcLakZyEFitwXk0Y9mzaqaK_y_E","437450":"1_5j6X96k4wGx46Gz41jgVdviww0CH4fG","437430":"1Tsh9pwgXUMYPtct22UvxrW_ntB7Ndec4","437410":"1Vv2GLfxqj9prnT3P_Xn2QIWWh4Hi81b5","437400":"1A_xNbwPQ4VWDSv9RulhyoFvr_Vg0QHMO","437350":"1TjSOUvGsF2RqgnRWDaLrYtrTlPAn6GKI","437311":"1FSyYGCfnO4xw-FqpBsNPGIDVLmnZjmjY","436922":"1t2cM2JHPlQACAh72o1vvh5hhIxf9O9PR","436920":"1mw4t1a_KQtHHHg_bDNeKfc5RQHfLJn42","436790":"1dIxZfk83g5tApV1_elkzbDJe85wNZ9Wp","436750":"1Yum_OguK08KNlGaNmlejp6N5fJveRzk2","436740":"1w35hGff99n6BSPKkcVDgxopaUu_qJr0L","436580":"1uV6nzHPLSkEdXlAziQqfeBBygIPO8p09","436480":"1G0Qh4b9xJhicus0MaHYCedIZExgs2-04","436440":"1ZPSl-KfWnPL1xE03I04im9-9KjrBsAgp","436380":"1Tp5bZcFmS_ij9UJD7wI-qLcSep1e6VIE","436350":"1GIjoSvgMVsuRsvRRSnJyS0vDCETlRv7S","436320":"1gPP-Mc_cNyqhJxBZ-LzZevcZ8wbUeWtp","436300":"1ftcknBEwoEOLrfsOBdkDLrXOx5fViYMJ","436110":"1PcfWpbJeXBjY_k2whMkkh4-W6Qzdkt9g","435950":"1fPii-njPtyXsGFdH8QVPeXaGJDAfTzhO","435930":"1hSdJYrHmnZDSf3zaKUfwgujzRn2PqZ0I","435910":"1wnzvVqw7V-6pleJaC5tiQ80cgvUg56h0","435890":"12bMMAIHU67H-QnbvmnmhbW8qQkl7aqDI","435770":"1lmB6K-iEmWcAfpWNIAza1TQ9u5DvpIny","435750":"1lmB6K-iEmWcAfpWNIAza1TQ9u5DvpIny","435700":"12kkuVHngsmUzgZduURxZPsvKzUeSeuSw","430012":"1PG0RZHkEwdjVkga04-2eYaV1LhuDtGz_","417223":"1Ot-m-PnCrRPSfbK2twlgxYZCnB5nXtLd","416615":"1ps9MaWP5u7YCIoqvJM-FJYUQ34F1Pdke","415866":"1iaK7FCOqToD4NDjMjiRJO0Snf3RxdRA2","415520":"1okX0Sqp1mUktAY1SPPRSPF2CfHmLVjBx","415488":"1tD1AqtcBvhe8aUJbQyH1s8KBYFfqJlTQ","415456":"1Uvidgxh3TrToLzbxSDRF2gIlJV7HqaBi","410940":"1g1BQqfWc69FI5zjyeeZhfNCWcsXHu1M3","45250":"1GAr1A2u3ZQidRA-Z49vkaFc67vrJVYkZ","44LI27":"1ULOkFa5Sv340wEd60i3GGSViz1-bXwPL","474781":"1q50Z49xDkzzLcaOHGpusuXvG_QgTPvkR","45001A":"1cx2W3OqFuY4hz94XYKPlqJcUW2YA__lX","45001B":"1j8tBUv8lomtlkDprRO8X7-vc5JYR246X","45001C":"1Y9j0ItXlPjpcGcRAQjbo_uLVjzN5mXlT","45001F":"1f7dYHXiQidSokS08kUWvbA_17lQ_w-Ok","45001G":"1GAr1A2u3ZQidRA-Z49vkaFc67vrJVYkZ"};
+
+const PRODUCTS = [{"code":"OSC7PD","name":"SILK VIRIN (8/0) 45 CM 2 * TSP 7MM","type":"حرير فيرجن","category":"خيوط","manufacturer":"AM للتجارة"},{"code":"OTF8PD","name":"322085 ASTRALEN (5/0) 2 * KSP 8 SPATULA","type":"بول استر (ايثيبوند)","category":"خيوط","manufacturer":"AMللتجارة"},{"code":"OVM151","name":"TVM151 TRULENE MESH* POLYP MESH 15CM*15C","type":"شبكة جراحية بولي بروبيلين","category":"خيوط","manufacturer":"شركة الهلال والنجمة"},{"code":"OVM303","name":"TRULENE MESH*POLYP MESH SIZE 30CM * 30CM","type":"شبكة جراحية بولي بروبيلين","category":"خيوط","manufacturer":"شركة الهلال والنجمة"},{"code":"R8","name":"Box of 1 unit. Suture Cabinet","type":"دولاب حفظ الخيوط","category":"خيوط","manufacturer":"ETHICON"},{"code":"R9","name":"Suture Cabinet Extender Unit","type":"دولاب حفظ الخيوط","category":"خيوط","manufacturer":"ETHICON"},{"code":"LC107","name":"Liga Clips Applier L.C. 107PCSETHICON LT","type":"واضع كلبسات","category":"خيوط","manufacturer":"ETHICON"},{"code":"LC410","name":"Liga Clips Applier L.C. 410PCSETHICON LT","type":"واضع كلبسات","category":"خيوط","manufacturer":"ETHICON"},{"code":"LC205","name":"Medum Aplair l.c. 205PCSETHICON LTD.","type":"واضع كلبسات","category":"خيوط","manufacturer":"ETHICON"},{"code":"LC210","name":"Liga Clips Applier L.C. 210PCSETHICON LT","type":"واضع كلبسات","category":"خيوط","manufacturer":"ETHICON"},{"code":"LC207","name":"Liga Clips Applier L.C. 207PCSETHICON LT","type":"واضع كلبسات","category":"خيوط","manufacturer":"ETHICON"},{"code":"44LI17","name":"06.103.01 Scalpel handle no. 3 graduated","type":"يد مشرط","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44LI18","name":"42.150.11 JAEGER lid plate 11 cmPCS","type":"لوحة غطاء للعين","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44LI23","name":"18.230.12 DESMARRES retractor (eyelid)","type":"مباعد","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44LI24","name":"18.230.18 DESMARRES retractor (eyelid)","type":"مباعد","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44LI27","name":"18.181.22 DEAVER retractor 22x215 mm","type":"مباعد","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44LI30","name":"PARRAQUERNEEDLEHOLDER W AUTCATCH-CURV10C","type":"ماسك ابر","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44LI31","name":"43.224.10 McPHERSON TITAN ty.fcps.smooth","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44LI32","name":"43.185.10 Tübingen tying forceps Titanium","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44OR02","name":"12.211.10 Hartmann Hemostatic Forcep curved","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44OR03","name":"12.210.10 Hartmann Hemostatic Forcep straight","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44OR04","name":"09.135.10 CASTROVIEJO irid.sciss.bl/bl","type":"مقص","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44OR05","name":"09.104.11 WESTCOTT tendon sciss. bl/bl","type":"مقص","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44OR07","name":"42.830.10 STEVENS iris forceps serrated","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44OR12","name":"42.353.13 JAMESON strabismus hook","type":"هوك","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44OR20","name":"32.713.16 WILLIGER periosteal 16 cm","type":"رافع","category":"الات","manufacturer":"A.HENNISS"},{"code":"44OR27","name":"40.510.02 Kerrison Rongeur 180mm 90°","type":"قراضة","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44OR28","name":"40.510.03 KERRISON rong. 180mm 90°","type":"قراضة","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"44OR29","name":"40.510.04 KERRISON rong. 180mm 90°","type":"قراضة","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"410940","name":"PEAN ARTERY FORCEPS CURVED 14 CM","type":"جفت","category":"الات","manufacturer":"A.HENNISS"},{"code":"411092","name":"FORCEPS ARTERY CRV. ROCHESTER PEANS 7","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"411260","name":"FORCEPS ARTERY STR. 5 14 CM","type":"جفت","category":"الات","manufacturer":"FALCON"},{"code":"411280","name":"FORCEPS ARTERY STR. 6 16 CM","type":"جفت","category":"الات","manufacturer":"FALCON"},{"code":"411340","name":"ARTERY FORCEPS CRILE 14 CM STR","type":"جفت","category":"الات","manufacturer":"FALCON"},{"code":"411342","name":"Crile Hemostatic forceps 14 cm Cvd.","type":"جفت","category":"الات","manufacturer":"FALCON"},{"code":"411820","name":"FORCEPS TISSUE 1 X 2T 18CM","type":"جفت","category":"الات","manufacturer":"A.HENNISS"},{"code":"411840","name":"DISSECTING FORCEPS 1X2T 8","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"412141","name":"DISSECTING FORCEPS ORDINARY 145 MM.","type":"جفت","category":"الات","manufacturer":"FALCON"},{"code":"412180","name":"FORCEPS DISSECTING ORDINARY 7 18 CM","type":"جفت","category":"الات","manufacturer":"FALCON"},{"code":"412652","name":"FORCEPS KOCHER CRV. 5.5 14 CM","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"412660","name":"FORCEPS KOCHER CRV. 6 16 CM","type":"جفت","category":"الات","manufacturer":"A.HENNISS"},{"code":"412790","name":"HALSTED MOSQUITO FORCEPS CVD 12.5 CM","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"412850","name":"FORCEPS MOSQUITO STR. 12.5 CM","type":"جفت","category":"الات","manufacturer":"FALCON"},{"code":"413130","name":"FORCEPS SPONGE HOLDER STRAIGHT","type":"جفت","category":"الات","manufacturer":"A.HWNNISS"},{"code":"413133","name":"FORCEPS SPONGE HOLDING FORESTER 18 CM","type":"جفت","category":"الات","manufacturer":"FALCON"},{"code":"415862","name":"RETRACTOR DEAVER 300X38MM","type":"مباعد","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"415865","name":"RETRACTOR DEAVER 50X300MM","type":"مباعد","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"415866","name":"DEAVER RETRACTOR 75 X 300MM","type":"مباعد","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"416910","name":"SCISSORS MAYO CRV. 5 - 5.5","type":"مقص","category":"الات","manufacturer":"A.HENNISS"},{"code":"416932","name":"SCISSORS MAYO CRV 6.5 17 CM","type":"مقص","category":"الات","manufacturer":"FALCON"},{"code":"416970","name":"SCISSORS MAYO CRV. 8 20 CM","type":"مقص","category":"الات","manufacturer":"FALCON"},{"code":"417040","name":"SCISSORS MAYO STR. 6 - 6.5","type":"مقص","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"417222","name":"SCISSORS METZENBAUM CRV. 9 9.5","type":"مقص","category":"الات","manufacturer":"FALCON"},{"code":"417223","name":"METZENBAUM/NELSON DISSECTING 25CM","type":"مشرح","category":"الات","manufacturer":"FALCON"},{"code":"420602","name":"De bakey fcps,atrumatic,str,2.0/2.5m,24c","type":"جفت دي باكي","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"420604","name":"DeBakey Atraumatic Dissecting forc3.5 16","type":"جفت دي باكي","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"430012","name":"Reiner Ear Syringe 100 ml","type":"سرنجة غسيل أذن","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"435700","name":"TRACHEOSTOMY TUBE FENESTRATED 13.mm","type":"أنبوبة قصبة هوائية","category":"الات","manufacturer":"MEDICOR"},{"code":"435750","name":"TRACHEAL TUBE NON FENESTRATED NO4","type":"أنبوبة قصبة هوائية","category":"الات","manufacturer":"CARL MELCHER"},{"code":"435770","name":"TRACHEAL TUBE NON FENESTRATED NO5","type":"أنبوبة قصبة هوائية","category":"الات","manufacturer":"LOMTON"},{"code":"435890","name":"TRACHEAL TUBE 6ML","type":"أنبوبة قصبة هوائية","category":"الات","manufacturer":"CHINA NATIONAL"},{"code":"435910","name":"TRACHEAL TUBE 7ML","type":"أنبوبة قصبة هوائية","category":"الات","manufacturer":"CHINA NATIONAL"},{"code":"435930","name":"TRACHEAL TUBE 12ML","type":"أنبوبة قصبة هوائية","category":"الات","manufacturer":"CHINA NATIONAL"},{"code":"435950","name":"TRACHEOSTOMY TUBE LARYNGECTOMY","type":"أنبوبة قصبة هوائية","category":"الات","manufacturer":"SEWARD"},{"code":"436110","name":"KOCHER THYROID DISSECTOR","type":"مشرح","category":"الات","manufacturer":"PAKISTANCO"},{"code":"436320","name":"MAGIL FORCEPS SMALL","type":"جفت","category":"الات","manufacturer":"CHINA NATIONAL"},{"code":"436350","name":"TONGUE FORCEPS EO332","type":"جفت لسان","category":"الات","manufacturer":"CHINA NATIONAL"},{"code":"436380","name":"PERCUSSION HAMMER","type":"مطرقة فحص الأعصاب","category":"الات","manufacturer":"A.HENNISS"},{"code":"436440","name":"RUBBER SYRINGE","type":"سرنجة كاوتش","category":"الات","manufacturer":"STUMER GMBH"},{"code":"436480","name":"HOOK AND SPOON","type":"ملعقة وخطاف أذن مزدوج","category":"الات","manufacturer":"STORZ"},{"code":"436580","name":"TRACHEL TUBE SIZES","type":"أنبوبة قصبة هوائية","category":"الات","manufacturer":"MEDEXPORT"},{"code":"436740","name":"NEEDLE INJECTION 7761","type":"ابرة","category":"الات","manufacturer":"STORZ"},{"code":"436750","name":"EAR SNARE 560","type":"شرنقة أذن","category":"الات","manufacturer":"STORZ"},{"code":"436790","name":"SYRINGE PRESSURE W/ ADAPTOR 59","type":"حقنة ضغط","category":"الات","manufacturer":"STORZ"},{"code":"436920","name":"CLEFT PALLATE RASPATORY RT&LT","type":"كاشط سقف الحلق","category":"الات","manufacturer":"AESCULAP"},{"code":"436922","name":"CLEFT PALLATE RASPATORY DOWNWARD","type":"كاشط سقف الحلق","category":"الات","manufacturer":"THE HOLBORN"},{"code":"437311","name":"BALLENGER SEPTUM SWIVEL KNIFE","type":"سكينة الحاجز الأنفي","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"437350","name":"NASAL SPECULUM THUDICUM","type":"منظار أنف","category":"الات","manufacturer":"TERRATECH"},{"code":"437400","name":"Cottle Nasal specula 15cm 35mm","type":"منظار أنف","category":"الات","manufacturer":"FALCON"},{"code":"437410","name":"ANTRUM RASP","type":"مبرد","category":"الات","manufacturer":"STUMER GMBH"},{"code":"437430","name":"TROCAR ANTRUM LICHTWITZ","type":"مبزل الجيب الأنفي","category":"الات","manufacturer":"NOPA"},{"code":"437450","name":"TILLEY HARBOON TROCAR","type":"مبزل تيلي","category":"الات","manufacturer":"PAKISTANCO"},{"code":"437470","name":"ANTRUM PERFORATOR","type":"مثقاب الجيب الأنفي","category":"الات","manufacturer":"MARTIN"},{"code":"437541","name":"KILLIAN NASAL SPECULUM 13CMX50mm","type":"منظار أنف","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"437590","name":"NASAL SNARE","type":"شرنقة أنف","category":"الات","manufacturer":"MULLER"},{"code":"437610","name":"WIRE FOR NASAL SNARE","type":"واير شرنقة أنف","category":"الات","manufacturer":"AESCULAP"},{"code":"437670","name":"KILLIAN NASAL SEPARATOR","type":"مباعد/منظار أنف","category":"الات","manufacturer":"MUELLER"},{"code":"437810","name":"NASAL SAW","type":"منشار أنف","category":"الات","manufacturer":"SEWARD"},{"code":"438010","name":"TROELTSCH ANGULAR SPRING DRESSING FORCEP","type":"ملقاط أذن","category":"الات","manufacturer":"DIMEDA"},{"code":"438290","name":"HOWARTH NASAL ELEVATOR","type":"رافع","category":"الات","manufacturer":"MULLER"},{"code":"438533","name":"COCKLEY SHARP CURETTE 17 CM FIG 5","type":"كحاتة","category":"الات","manufacturer":"MULLER"},{"code":"438650","name":"JOSEPH NASAL RASPATORY STR","type":"كاشط أنف","category":"الات","manufacturer":"TUMED"},{"code":"439190","name":"TONGUE BLADE ONLY","type":"نصل خافض لسان","category":"الات","manufacturer":"RICHARD WOLF"},{"code":"439210","name":"هارد تونسيل ديسيكتور","type":"مشرح","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"439380","name":"HURD Tonsil Dissector smooth 22 cm","type":"مشرح","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"439590","name":"METZENBOUM TONSIL SCISSOR STR. 8","type":"مقص","category":"الات","manufacturer":"FALCON"},{"code":"450210","name":"CATHETER MALE METAL","type":"انبوبة شفط","category":"الات","manufacturer":"AESCULAP"},{"code":"450211","name":"METAL FEMALE CATHETER 10 FR","type":"انبوبة شفط","category":"الات","manufacturer":"DIMEDA"},{"code":"450420","name":"CLAMP PENIS STRAUSS","type":"مشبك شتراوس","category":"الات","manufacturer":"HENNISS"},{"code":"450750","name":"DIRECTOR FISTULA (PRENEAL)","type":"موجه نواسير","category":"الات","manufacturer":"CHIRON"},{"code":"451680","name":"FORCEPS KIDNEY STONE WARD CURVED","type":"جفت","category":"الات","manufacturer":"THE HOLBORN"},{"code":"452480","name":"MILLIN CAPSULE FORCEPS","type":"جفت ميلينز","category":"الات","manufacturer":"MULLER"},{"code":"452623","name":"SIM'S UTERINE CURRETTE NO 3 BLUNT","type":"كحاتة","category":"الات","manufacturer":"NORGATE"},{"code":"452624","name":"SIM'S UTERINE CURRETTE NO 5 BLUNT","type":"كحاتة","category":"الات","manufacturer":"NORGATE"},{"code":"452870","name":"NEEDLE BIOPSY LUER FITTING 13G X 35","type":"ابرة","category":"الات","manufacturer":"THE HOLBORN"},{"code":"452900","name":"NEEDLE BIOPSY LIVER (MENGIHINI) 1.4X40MM","type":"ابرة","category":"الات","manufacturer":"DOWNS"},{"code":"457010","name":"FORCEPS VULSELLUM SHR. TEN. 1X1 T STR.","type":"جفت","category":"الات","manufacturer":"FALCON"},{"code":"457400","name":"NEEDLE PUDENDAL BLOCK TRANS VAGINAL","type":"ابرة","category":"الات","manufacturer":"THACKARY LTD"},{"code":"458140","name":"SCISSORS UTERINE SIMS STRAIGHT 20CM","type":"مقص","category":"الات","manufacturer":"FALCON"},{"code":"458360","name":"CUSCO VAGINAL SPECULUM 85X35 MM. MEDIUM","type":"منظار مهبلي","category":"الات","manufacturer":"FALCON"},{"code":"460925","name":"CANCELLOUS SCREW 6.5X16X100ML","type":"مسمار كانسيلاس","category":"الات","manufacturer":"OSTEO AG"},{"code":"460935","name":"CANCELLOUS SCREW 6.5X32X50ML","type":"مسمار كانسيلاس","category":"الات","manufacturer":"AESCULAP"},{"code":"460942","name":"CANCELLOUS SCREW 6.5X32X85ML","type":"مسمار كانسيلاس","category":"الات","manufacturer":"AESCULAP"},{"code":"461510","name":"SHERMAN BONE PLATE 4 H.","type":"شريحة للعظام","category":"الات","manufacturer":"MARTIN"},{"code":"461511","name":"SHERMAN BONE PLATE 6 H. SMALL","type":"شريحة للعظام","category":"الات","manufacturer":"MARTIN"},{"code":"461512","name":"SHERMAN BONE PLATE 6 H. LARGE","type":"شريحة للعظام","category":"الات","manufacturer":"MARTIN"},{"code":"461530","name":"ANGULAR NAIL PLATE 70 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461531","name":"ANGULAR NAIL PLATE 75 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461532","name":"ANGULAR NAIL PLATE 80 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461647","name":"ANGULAR PLATE 130 DGREE 4 HOLE 95 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461650","name":"ANGULAR PLATE 130 DGREE 6 HOLE 50 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461656","name":"ANGULAR PLATE 130 DGREE 6 HOLE 90 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461662","name":"ANGULAR PLATE 130 DGREE 9 HOLE 70 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461664","name":"ANGULAR PLATE 130 DGREE 9 HOLE 80 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461666","name":"ANGULAR PLATE 130 DGREE 9 HOLE 90 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461674","name":"ANGULAR PLATE 130 DGREE 12 HOLE 80 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461676","name":"ANGULAR PLATE 130 DGREE 12 HOLE 90 ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461689","name":"Y PLATE MOUNTING HOLE SEPARATION 12MM","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461720","name":"NARROW COMPRESSION PLATE 5 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTED AG."},{"code":"461721","name":"NARROW COMPRESSION PLATE 6 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461722","name":"NARROW COMPRESSION PLATE 7 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"461723","name":"NARROW COMPRESSION PLATE 8 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"461724","name":"NARROW COMPRESSION PLATE 9 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"461725","name":"NARROW COMPRESSION PLATE 10 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"461800","name":"SEMI TUBULAR PLATE 4 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"461801","name":"SEMI TUBULAR PLATE 5 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461804","name":"SEMI TUBULAR PLATE 8 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461851","name":"ONE THIRD PLATE 4 HOLE 70ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461852","name":"ONE THIRD PLATE 5 HOLE 85ML","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"461942","name":"SMALL FRAGMENT PLATE A.C.P. 4HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"462030","name":"WIDE PLATE 4.5ML - 8 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"462033","name":"WIDE PLATE 4.5ML - 12 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"462034","name":"WIDE PLATE 4.5ML - 14 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"462080","name":"NARROW PLATE 2.5ML - 5 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"462082","name":"NARROW PLATE 2.5ML - 7 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"462084","name":"NARROW PLATE 2.5ML - 9 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"462085","name":"NARROW PLATE 2.5ML - 10 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"462145","name":"NARROW PLATE 4 ML - 10 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"OSTEO AG"},{"code":"462390","name":"CONDYLAR PLATE 95 DGREE 7 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"462716","name":"D.H.S. LAG SCREW 280-75","type":"مسمار DHS","category":"الات","manufacturer":"طنطاوى الطبية"},{"code":"462722","name":"D H S / DCS LAG SCREW L 60 MM","type":"مسمار DHS","category":"الات","manufacturer":"طنطاوى الطبية"},{"code":"462729","name":"D.H.S. COMPRISON SCREW","type":"مسمار DHS","category":"الات","manufacturer":"AESCULEP"},{"code":"462741","name":"D.H.S. PLATE 150 DGREE 5 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"AESCULAP"},{"code":"462752","name":"D.C.S. CONDYLAR PLATE 14 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"ROB MATHIOUS"},{"code":"462753","name":"D.C.S. CONDYLAR PLATE 16 HOLE","type":"شريحة للعظام","category":"الات","manufacturer":"ROB MATHIOUS"},{"code":"462826","name":"STEINMANN PIN 4.0X26CM","type":"مسامير شتاينمان","category":"الات","manufacturer":"MULLER"},{"code":"462832","name":"STEINMAN PIN 4.5ML DIA. X 200","type":"مسامير شتاينمان","category":"الات","manufacturer":"AESCULAP"},{"code":"462836","name":"STEINMANN PIN 4.5X26CM","type":"مسامير شتاينمان","category":"الات","manufacturer":"MULLER"},{"code":"462840","name":"STEINMAN PIN 5ML DIA. X 150","type":"مسامير شتاينمان","category":"الات","manufacturer":"AESCULAP"},{"code":"462844","name":"STEINMAN PIN 5ML DIA. X 250","type":"مسامير شتاينمان","category":"الات","manufacturer":"AESCULAP"},{"code":"462845","name":"STEINMANN PIN 5.0X16 CM","type":"مسامير شتاينمان","category":"الات","manufacturer":"MULLER"},{"code":"463232","name":"WIRE W/EYE 1 ML DOUBLE","type":"واير سيركلاج","category":"الات","manufacturer":"OSTEO AG"},{"code":"463242","name":"RUSH PIN 4 X 31.5 ML","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463243","name":"RUSH PIN 4 X 33.5 ML","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463275","name":"RUSH PIN 3.2mmX10 CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463276","name":"RUSH PIN 3.2mmX11.5 CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463277","name":"RUSH PIN 3.2mmX12.5CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463279","name":"RUSH PIN 3.2mm X 16.5CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463280","name":"RUSH PIN 3,2X18CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463283","name":"RUSH PIN 3.2mm X23CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463286","name":"RUSH PIN 4.0mmX 20.5CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463287","name":"RUSH PIN 4.0mm X 22 CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463288","name":"RUSH PIN 4.0 mmX 24CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463289","name":"RUSH PIN 4.0mmX25.5CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463291","name":"RUSH PIN 3.8mm X28CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"463292","name":"RUSH PIN 3.2X150MM","type":"سلك مرشد","category":"الات","manufacturer":"TEKNO MEDICAL"},{"code":"463299","name":"RUSH PIN 3.8mm x31.5CM","type":"سلك مرشد","category":"الات","manufacturer":"AESCULAP"},{"code":"464822","name":"Lambotte Bone Holding Forceps 22cm","type":"جفت ماسك عظام","category":"الات","manufacturer":"FALCON"},{"code":"464827","name":"Lambotte Bone Holding Forceps 27cm","type":"جفت ماسك عظام","category":"الات","manufacturer":"FALCON"},{"code":"465170","name":"LISTON BONE CUTTING FORCEPS STR. 17.5 CM","type":"جفت عظام","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"465171","name":"LISTON BONE CUTTING FORCEPS STR. 19 CM","type":"قصافة عظام","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"465810","name":"BONE AWEL W/2 DRILL","type":"بنطة منشار عظام","category":"الات","manufacturer":"AESCULAP"},{"code":"466210","name":"ANGLE PLASTER SAW","type":"منشار جبس","category":"الات","manufacturer":"NOPA"},{"code":"466211","name":"PLASTER SHEAR","type":"مقص جبس","category":"الات","manufacturer":"A. HENNISS"},{"code":"466212","name":"ELECTRIC PLASTER SAW","type":"منشار جبس كهرباء","category":"الات","manufacturer":"CHINA"},{"code":"466213","name":"ELECTRIC PLASTER CUTTER","type":"منشار جبس كهرباء","category":"الات","manufacturer":"CHINA"},{"code":"466611","name":"HOOK BLUNT 75-5152","type":"هوك","category":"الات","manufacturer":"WALDEMAR"},{"code":"466613","name":"HOOK BLUNT W/RIB 75-5156","type":"هوك","category":"الات","manufacturer":"WALDEMAR"},{"code":"466615","name":"HOOK BLUNT 75-5166","type":"هوك","category":"الات","manufacturer":"WALDEMAR"},{"code":"467134","name":"EXTENSION GUIDE 1011","type":"ماسك جبيرة خارجية","category":"الات","manufacturer":"HOWMEDICA"},{"code":"468420","name":"TENDON STRIPPER","type":"مباعد ضلوع","category":"الات","manufacturer":"MEDICON"},{"code":"468613","name":"TREPHINE HANDLE 700061","type":"يد مفتاح T","category":"الات","manufacturer":"OSTEO"},{"code":"469457","name":"BONE CEMENT GUN","type":"مسدس حقن الاسمنت العظمي","category":"الات","manufacturer":"C. M. W."},{"code":"469810","name":"DELGREN CRANIAL RONGEUR","type":"قراضة","category":"الات","manufacturer":"MEDICON"},{"code":"472033","name":"DRAHTSAGE N.GIGLI 400MM.","type":"سلك منشار جيجلي","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"472032","name":"GIGLI SAW WIRE 6 PARTS","type":"سلك منشار جيجلي","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"472380","name":"GIGLI SAW WIRE 50CM","type":"سلك منشار جيجلي","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"472604","name":"GIGLI SAW WIRE 70CM","type":"سلك منشار جيجلي","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"474031","name":"GIGLI SAW WIRE 50CM","type":"سلك منشار جيجلي","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"474781","name":"TREPHINE DISC","type":"مثاقيب جراحية","category":"الات","manufacturer":"DOWNS"},{"code":"45001A","name":"CUSCO VAGINAL SPECULA 100*35","type":"منظار كاسكو","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"45001B","name":"CUSCO VAGINAL SPECULA 85*35mm","type":"منظار كاسكو","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"45001C","name":"CUSCO VAGINAL SPECULA 75*32mm","type":"منظار كاسكو","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"45001F","name":"SIMS UTERINE SOUND GRAD RIGID","type":"مجس ساوند للرحم","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"45001G","name":"Shroeder TANACULUM Forcep 25cm","type":"جفت","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"45250","name":"SIMS UTERINE SOUND GRAD MALLEABLE 32CM","type":"مجس ساوند للرحم","category":"الات","manufacturer":"FALCON"},{"code":"416615","name":"SCALPEL OPERATING SIZES","type":"يد مشرط","category":"الات","manufacturer":"شركة طنطاوى"},{"code":"415456","name":"NEEDLE SUTURE CUTTING CURVED NO. 9","type":"ابرة","category":"الات","manufacturer":"CHINA"},{"code":"415488","name":"NEEDLE SUTURE CUTTING SLIGHT CRV.","type":"ابرة","category":"الات","manufacturer":"AESCULAP"},{"code":"415520","name":"NEEDLE SUTURE ROUND STR.","type":"ابرة","category":"الات","manufacturer":"DOWNS"},{"code":"415866","name":"DEAVER RETRACTOR 75 X 300MM","type":"مباعد","category":"الات","manufacturer":"A HENNISS GMBH"},{"code":"416010","name":"RETRACTOR HOOK 2 PRONG BLUNT","type":"مباعد","category":"الات","manufacturer":"CHINA"}];
+
+function thumb(id){return `https://drive.google.com/thumbnail?id=${id}&sz=w300`;}
+
+all = PRODUCTS;
+
+function applyFilters(){
+  filtered = all.filter(f=>{
+    const t = (f.code+' '+f.name+' '+f.type+' '+f.manufacturer).toLowerCase();
+    const mS = !search || t.includes(search);
+    const mF = filter==='all' || f.type.includes(filter) || f.category.includes(filter) || f.name.toLowerCase().includes(filter);
+    return mS && mF;
+  });
+  page=1; render();
+}
+
+function render(){
+  const g=document.getElementById('gallery');
+  const pager=document.getElementById('pager');
+  const empty=document.getElementById('empty');
+  const total=Math.ceil(filtered.length/PER);
+  const start=(page-1)*PER;
+  const slice=filtered.slice(start,start+PER);
+  document.getElementById('cnt-badge').textContent=`${filtered.length} صنف`;
+  if(!filtered.length){g.innerHTML='';pager.style.display='none';empty.style.display='block';return;}
+  empty.style.display='none';
+  g.innerHTML=slice.map((f,i)=>{
+    const driveId=DRIVE[f.code];
+    return `<div class="pc" onclick="openModal(${start+i})">
+      <div class="pw">
+        ${driveId?`<img src="${thumb(driveId)}" alt="${f.code}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="ph" style="display:none;"><div class="phi">🔬</div><span>${f.code}</span></div>`:
+        `<div class="ph" style="display:flex;"><div class="phi">🔬</div><span>${f.code}</span></div>`}
+        <span class="clb">${f.type.substring(0,8)}</span>
+      </div>
+      <div class="pi"><h4>${f.code}<br>${f.type}</h4><div class="ps">${f.manufacturer}</div></div>
+      <div class="ov"><span>عرض التفاصيل</span></div>
+    </div>`;
+  }).join('');
+  if(total>1){
+    pager.style.display='flex';
+    document.getElementById('pager-info').textContent=`صفحة ${page} من ${total}`;
+    document.getElementById('btn-prev').disabled=page===1;
+    document.getElementById('btn-next').disabled=page===total;
+  } else { pager.style.display='none'; }
+}
+
+function changePage(d){page+=d;render();document.getElementById('products').scrollIntoView({behavior:'smooth'});}
+function doSearch(){search=document.getElementById('s-input').value.toLowerCase().trim();applyFilters();}
+function setFilter(f,btn){filter=f;document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');applyFilters();}
+function openModal(idx){
+  const f=filtered[idx];
+  const driveId=DRIVE[f.code];
+  document.getElementById('m-img').src=driveId?thumb(driveId):'';
+  document.getElementById('m-title').textContent=f.type+' — '+f.code;
+  document.getElementById('m-code').textContent=f.code;
+  document.getElementById('m-type').textContent=f.type;
+  document.getElementById('m-mfr').textContent=f.manufacturer;
+  document.getElementById('m-name').textContent=f.name;
+  document.getElementById('m-link').href=driveId?`https://drive.google.com/file/d/${driveId}/view`:'#';
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+applyFilters();
+</script>
+</body>
+</html>
